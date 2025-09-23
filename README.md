@@ -29,7 +29,7 @@ A modern, single-page React web application allowing users to create, view, and 
 * Quick navigation using React Router
 * Engaging iconography with Lucide React
 * Hot Module Reloading (HMR) for seamless development
-* Linting for consistent, robust code
+* Linting for consistent, robust code.
 
 ---
 
