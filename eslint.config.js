@@ -5,19 +5,39 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'node_modules', '.expo', 'web-build', 'android', 'ios'] },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        // React Native globals
+        __DEV__: 'readonly',
+        fetch: 'readonly',
+        console: 'readonly',
+        global: 'readonly',
+        process: 'readonly',
+        // Expo globals
+        expo: 'readonly',
+        // Metro bundler globals
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly'
+      },
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
       },
     },
-    settings: { react: { version: '18.3' } },
+    settings: { 
+      react: { 
+        version: '19.1',
+        pragma: 'React'
+      } 
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,
@@ -33,6 +53,13 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      // React Native specific rules
+      'no-undef': 'warn',
+      'no-unused-vars': 'warn',
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      // Allow console.log in React Native development
+      'no-console': 'off'
     },
   },
-]
+];
