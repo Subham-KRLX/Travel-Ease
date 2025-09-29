@@ -8,9 +8,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import SearchResultsScreen from './src/screens/SearchResultsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
-
 const Stack = createStackNavigator();
-
 export default function App() {
   return (
     <AuthProvider>
