@@ -19,7 +19,6 @@ export default [
         console: 'readonly',
         global: 'readonly',
         process: 'readonly',
-        // Expo globals
         expo: 'readonly',
         // Metro bundler globals
         require: 'readonly',
